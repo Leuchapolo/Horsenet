@@ -2,8 +2,28 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.homeNavbar{
+	height: 80px;
+	background-color: #7CF;
+	text-align: center;
+	padding: 9px;
 
-.start {
-	height: 100px;
+}
+
+#favorites {
+	height: 60px;
 	background-color: #8AF;
 }
+
+#newsFeed {
+	height: 60px;
+	background-color: #F6B;
+}
+
+#messages {
+	height: 60px;
+	background-color: #F6B;
+}
+
+
+
