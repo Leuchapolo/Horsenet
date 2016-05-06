@@ -1,3 +1,3 @@
 $(document).ready(function(){
-	console.log("TACOSS");
+	$('#newsFeed').append('<div class = "homeObject">Tacos</div>')
 })
