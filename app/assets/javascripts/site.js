@@ -1,3 +1,3 @@
 $(document).ready(function(){
-	$('#newsFeed').append('<span class = "homeObject">Tacos</span>')
+	$('#newsFeed').append('<div class = "homeObject">Tacos</div>')
 })
