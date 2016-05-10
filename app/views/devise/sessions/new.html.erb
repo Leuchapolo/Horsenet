@@ -1,10 +1,13 @@
-<h2>Log in</h2>
+
 
 <div class = "container">
+  <div class = "row blank-login-space">
+  </div>
   <div class = "row">
     <div class = "col-md-8">
     </div>
     <div class = "col-md-4">
+      <h2>Log in</h2>
       <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
         <div class="field">
           <%= f.label :email %><br />
