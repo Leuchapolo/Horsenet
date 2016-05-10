@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  has_many :followers, class_name: "User", through: :user_follows
-  has_many :followeds, class_name: "User", through: :user_follows
+  has_many :followers, through: :user_follows, class_name: "User" 
+  has_many :followeds,  through: :user_follows , class_name: "User"
 
 end
