@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   root 'site#index'
 
   devise_for :users
-
+  get '/api/posts/user_news', to: 'posts#user_news'
   scope '/api' do 
     resources :user_follows
     resources :posts

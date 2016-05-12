@@ -16,14 +16,17 @@ class User < ActiveRecord::Base
   has_many :post_tags, as: :taggable
   has_many :posts, through: :post_tags
 
+  #The following post tags is messed up because  
+  #SELECT "post_tags".* FROM "post_tags" INNER JOIN "user_follows" 
   
-
-
-
-  # has_many :blahs, class_name: "Blah", foreign_key: "user_id"
-  # belongs_to :thing, class_name: "Thing", foreign_key: "thing_id"
-
-  # ActiveRecord::HasManyThroughAssociationNotFoundError:
-  # Could not find the association :user_follows in model User
+  #ON "post_tags"."id" = "user_follows"."following_id"
+  #This ^^^^^^^^^^^^^^^ needs to be post_tags.taggable_id
+  #...
+  #...
+  # WHERE "user_follows"."follower_id" = $1  [["follower_id", 2]]
+  
+  has_many :following_post_tags, class_name: "PostTag", through: :user_followings, source: "following", foreign_key: "taggable_id", as: :taggable
+  has_many :following_posts, class_name: "Post", source: "post", through: :following_post_tags, foreign_key: "post_id"
+  
 
 end
