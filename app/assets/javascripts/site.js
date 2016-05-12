@@ -24,6 +24,6 @@ var fillNews = function(data){
 		$('#newsFeed').append(`<div class = "homeObject" id = "newsUnit${i}"></div>`)
 		$(`#newsUnit${i}`).prepend(`<div id = "newsUnit${i}postHeaderInfo"></div>`)
 		$(`#newsUnit${i}postHeaderInfo`).append(`<a href = "">${data[i].post.original_poster.name}</a><br>`)
-		// $(`#newsUnit${i}postHeaderInfo`).append(`<p> ${data[i].post_tag} </p>
+		
 	}
 }
