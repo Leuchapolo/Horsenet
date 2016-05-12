@@ -15,7 +15,6 @@ class User < ActiveRecord::Base
 
   has_many :post_tags, as: :taggable
   has_many :posts, through: :post_tags
-
   #The following post tags is messed up because  
   #SELECT "post_tags".* FROM "post_tags" INNER JOIN "user_follows" 
   
