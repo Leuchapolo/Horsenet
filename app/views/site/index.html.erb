@@ -1,8 +1,10 @@
 <div class = "container-fluid">
-	<div class = "row homeNavbar">
+	<div class = "row navbar" id = "homeNavbar">
+		
 		<div id = "SearchAndHomeItems" class = "col-md-4 homeNavbarItem">Search and Home</div>
 		<div class = "col-md-2" ></div>
 		<div id = "ProfileOptionsItems" class = "col-md-4 homeNavbarItem">Here are your profile options</div>
+		
 	</div>
 	<div class = "row mainBoxes">
 		<div id = "favorites" class = "col-md-2  mainBox">Favorites</div>
@@ -10,7 +12,7 @@
 		<div id = "messages" class = "col-md-3  mainBox">Messages</div>
 	</div>
 
-
+<!-- Use a cork board for the background image -->
 </div>
 <%= @current_user %>
 <%= link_to('Sign Out', '/users/sign_out', method: :delete) %>
