@@ -33,8 +33,11 @@ function setupMakeNewPost(){
 	$('.newPostPhotoOptions').append(`<span id = "newPostPhotoOptionCreateAlbum"><a href = "">Create Album</a> </span>`)
 	$('#newsUnitNewPost').append(`<div class = "newPostTextProfPic"></div>`)
 	$('.newPostTextProfPic').append(`<img class = "newsPostHeaderProfPic" src = "https://s-media-cache-ak0.pinimg.com/564x/c6/7c/6f/c67c6fd92582294f775b16395de246ea.jpg" height = "40" width = "40">`)
-	$('.newPostTextProfPic').append(`<div class = "newPostTextBox"><textarea placeholder = "Write your post here"></textarea></div>`)
-	
+	$('.newPostTextProfPic').append(`<div class = "newPostTextBox"><textarea class = "newPostText" placeholder = "Write your post here"></textarea></div>`)
+	autosize($('textarea'))
+	$('#newsUnitNewPost').append(`<div class = "newPostActions"></div>`)
+	$('.newPostActions').append(`<span class = "newPostActionsTagButtons"><span class="glyphicon glyphicon-tag newPostTagButton" aria-hidden="true"></span></span>`)
+	$(`.newPostActions`).append(`<button type="button" class="btn btn-primary postNewPostButton">Post</button>`);
 }	
 
 
@@ -86,7 +89,7 @@ var fillNews = function(data){
 
 		$(`#newsUnit${i}`).append(`<p class = "newsUnitText" id = "newsUnit${i}text"> ${data[i].post.text} </p>`)
 		$(`#newsUnit${i}`).append(`<div id = "newsUnit${i}likeBar" class = "likeBar"></div>`)
-		$(`#newsUnit${i}likeBar`).append(`<div id = "newsUnit${i}likeBarButtons" class = "likeBarButtons"></div><div class = "likeBarBuffer"></div>`)
+		$(`#newsUnit${i}likeBar`).append(`<div id = "newsUnit${i}likeBarButtons" class = "likeBarButtons"></div>`)
 		$(`#newsUnit${i}likeBarButtons`).append(`<span class = "likeBarButton"><span class = "glyphicon glyphicon-thumbs-up" ></span></span><span class = "likeBarButton"><span class = "glyphicon glyphicon-comment" ></span></span><span class = "likeBarButton"><span class = "glyphicon glyphicon-share" ></span></span>`)
 	}
 }

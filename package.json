@@ -1,0 +1,26 @@
+{
+  "name": "horsenet",
+  "version": "1.0.0",
+  "description": "\"Adding resizable text area to horsenet\"",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://git.heroku.com/horsenet.git"
+  },
+  "keywords": [
+    "horse"
+  ],
+  "author": "Michael Bellissimo",
+  "license": "ISC",
+  "dependencies": {
+    "autosize": "^3.0.15",
+    "browserify": "^13.0.1",
+    "browserify-incremental": "^3.1.1"
+  }
+}
