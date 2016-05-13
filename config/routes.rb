@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   
   
- 
+  get 'api/current_user' => "site#current_user_id"
 
   root 'site#index'
 

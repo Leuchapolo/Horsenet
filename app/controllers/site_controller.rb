@@ -7,4 +7,9 @@ class SiteController < ApplicationController
   		render 'index'
   	end
   end
+
+  def current_user_id
+  	render json: current_user
+  end
+
 end

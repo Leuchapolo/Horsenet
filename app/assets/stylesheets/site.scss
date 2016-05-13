@@ -1,48 +1,59 @@
 // Place all the styles related to the site controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+///Yellow color- #FFFED8 
+
+html{
+	color: #FFFED8;
+	font-size: 15px;
+	
+}
+
 .navbar {
-	//box-shadow: 0px 2px 1px black;
+	
 	background-color: #7CF;
 	text-align: center;
-	padding: 9px;
+	
+	padding-top: 9px;
 	border-radius: 0px;
 	
 }
 
 #homeNavbar{
 	margin-bottom: 0px;
-	box-shadow: 0 1px 1px black;
+	box-shadow: 0 2px 1px #89B;
 	border-radius: 0px;
+	min-height: 42px;
+	width: 100%;
+	position: fixed;
+	z-index: 15;
+}
+
+
+#homeNavbarBuffer{
+	height: 40px;
+
 }
 
 .homeNavbarItem{
-	padding: 9px;
-	height: 40px;
+	
+	height: 25px;
 }
 
 .mainBoxes{
 	background-color: #FFFED8;
-	height: 600px;
+	min-height: 650px;
 	padding: 0px;
 	margin: 0px;
 	text-align: center;
 	padding-top: 12px;
 	
-}
-
-.likeBar{
 	
-	padding: 6px;
 }
 
-.likeBarButton{
 
-	padding-left: 40px;
-	padding-right: 40px;
-
-
-}
 
 .mainBox{
 
@@ -61,26 +72,74 @@
 	border-top: 0.5px solid #9AC;
 }
 
+.likeBar{
+	
+	padding: 6px;
+}
+
+.likeBarButtons{
+	width: 60%;
+	text-align: center;
+}
+
+.likeBarButton{
+
+	padding-left: 40px;
+	padding-right: 40px;
+
+
+}
+
+.likeBarBuffer{
+	width: 40%;
+}
+
 .newsPostHeaderInfoText{
-	margin-left: 6px;
+	
 	font-size: 15px;
 }
 
 .newsPostHeaderTime{
 	font-size: 10px;
 	color: grey;
-	// margin-left: 55px;
-	// position: relative;
-	// bottom: 14px;
+	margin-left: 5px;
+	
+}
+
+.newsPostHeaderProfPic{
+	float: left;
+	margin-right: 8px;
+}
+
+.newPostTextProfPic{
+	margin-top: 12px;
+	margin-bottom: 12px;
 }
 
 .newsPostHeaderInfo{
 	padding: 0;
 }
 
+.newPostPhotoOptions{
+	margin-left: 3px;
+	padding-bottom: 8px;
+	border-bottom: 1px solid #9AC; 
+}
+
+.newPostText{
+	margin-top: 12px;
+}
+
+#newPostPhotoOptionUpdateStatus, #newPostPhotoOptionAddPhotoVideo {
+	margin-left: 5px;
+	margin-right: 8px;
+	border-right: 1px solid #9AC;
+}
+
 .homeObject {
 	width: 100%;
 	background-color: #FFF;
+
 	margin-top: 8px;
 	margin-bottom: 8px;
 	margin-left: 0px;
