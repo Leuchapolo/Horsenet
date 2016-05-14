@@ -16,4 +16,10 @@ class PostsController < ApplicationController
   		render json: response
 
   	end
+
+    def create 
+      
+
+    end
+
 end

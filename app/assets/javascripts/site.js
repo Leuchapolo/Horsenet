@@ -45,7 +45,7 @@ function setupMakeNewPost(){
 function setupNewsPosts(){
 	
 	$.ajax({
-		url: "http://localhost:3000/api/posts/current_user_news",
+		url: "api/posts/current_user_news",
 		success: fillNews,
 		error: function(error){
 			console.log(error);
