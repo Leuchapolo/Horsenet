@@ -18,7 +18,30 @@ class PostsController < ApplicationController
   	end
 
     def create 
+      user = User.find_by(id: params[:original_poster_id].to_i);
+      unless user 
+        render json: {error: "Could not find user"}
+      else
+
+        post = Post.new(text: params[:text], original_poster: user)
+        post.save
+        unless post.errors.messages == {}
+          #print error
+          render json: {error: post.errors.messages}
+        else 
+          tag = user.post_tags.new(post_id: post.id)
+          tag.save 
+          unless tag.errors.messages == {}
+            render json: {error: tag.errors.messages}
+          else
+            render json: {post: post}
+          end
+        end
+          
+
+      end
       
+    
 
     end
 

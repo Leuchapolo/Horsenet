@@ -38,6 +38,22 @@ function setupMakeNewPost(){
 	$('#newsUnitNewPost').append('<div class = "newPostActions"></div>')
 	$('.newPostActions').append('<span class = "newPostActionsTagButtons"><span class="glyphicon glyphicon-tag newPostTagButton" aria-hidden="true"></span></span>')
 	$('.newPostActions').append('<button type="button" class="btn btn-primary postNewPostButton">Post</button>');
+	$('.postNewPostButton').click(function(){
+		$.ajax({
+			url: "api/posts",
+			method: "POST",
+			error: function(error){console.log(error)},
+			data: {
+				text: $('.newPostText').val(),
+				original_poster_id: Horsenet.CurrentUser.id
+			},
+			success: function(data){
+				$('.newPostText').val("");
+			}
+		})
+	})
+
+
 }	
 
 
@@ -54,7 +70,7 @@ function setupNewsPosts(){
 }
 
 var fillNews = function(data){
-	
+	console.log(data)
 	//to sort you just do a sort function and go deep within the nested structure to find the created at for the post_tag
 	for (i in data){
 		//console.log(data[i])
