@@ -22,7 +22,8 @@ function loadCurrentUserInfoThenSetup(){
 
 function setup(){
 	setupMakeNewPost();
-	setupNewsPosts();
+
+	setupNewsPosts("current_user_news");
 }
 
 function setupMakeNewPost(){
@@ -49,6 +50,7 @@ function setupMakeNewPost(){
 			},
 			success: function(data){
 				$('.newPostText').val("");
+				
 			}
 		})
 	})
@@ -58,10 +60,10 @@ function setupMakeNewPost(){
 
 
 
-function setupNewsPosts(){
+function setupNewsPosts(posts_source){
 	
 	$.ajax({
-		url: "api/posts/current_user_news",
+		url: "api/posts/" + posts_source,
 		success: fillNews,
 		error: function(error){
 			console.log(error);

@@ -7,6 +7,7 @@ Rails.application.routes.draw do
 
   devise_for :users
   get '/api/posts/current_user_news', to: 'posts#user_news'
+  get '/api/user/:id/posts', to: 'posts#user_posts'
   get '/api/users/:id', to: 'user_info#show_public_info'
   scope '/api' do 
     resources :user_follows

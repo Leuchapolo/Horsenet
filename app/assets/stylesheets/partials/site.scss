@@ -12,7 +12,7 @@ html{
 }
 
 .container-fluid {
-	background-color: #FFFED8;
+	background-color: #EEEEEE;
 }
 
 .navbar {
@@ -20,7 +20,7 @@ html{
 	background-color: #7CF;
 	text-align: center;
 	
-	padding-top: 9px;
+	
 	border-radius: 0px;
 	
 }
@@ -33,26 +33,70 @@ html{
 	width: 100%;
 	position: fixed;
 	z-index: 15;
+	text-align: left;
 }
 
 
-#homeNavbarBuffer{
-	height: 55px;
-	background-color: #FFFED8;
-}
 
 .homeNavbarItem{
 	
-	height: 25px;
+	min-height: 40px;
+}
+
+#ProfileOptionsItems{
+	padding: 8px;
+
+}
+.ProfileOptionsItem{
+	padding-left: 8px;
+	padding-right: 8px;
+	margin-left: 5px;
+}
+
+#ProfileNotificationsButtons{
+	border-right: 1px solid #AAA;
+}
+
+#ProfileNotificationsButton{
+	padding-left: 12px;
+	padding-right: 8px;
+	padding-bottom: 0px;
+	
+	font-size: 15px;
+}
+
+#ProfileOptionsItemsCurrentUser {
+	
+	border-right: 1px solid #AAA;
+}
+
+#searchAndHomeItems{
+	margin-left: 25px;
+}
+
+#searchBar{
+	border-radius: 2px;
+	border: 0px;
+	margin-left: 8px;
+}
+
+#searchButton{
+	
+	font-size: 20;
+	border-radius: 2px;
+}
+
+#searchButtonContainer{
+	padding: 3px;
+	background-color: #7CF;
 }
 
 .mainBoxes{
-	background-color: #FFFED8;
+	background-color: #EEEEEE;
 	min-height: 650px;
-	padding: 0px;
+
 	margin: 0px;
 	text-align: center;
-	padding-top: 12px;
 	
 	
 }
@@ -60,10 +104,21 @@ html{
 
 
 .mainBox{
-
+	margin-top: 60px;
 	padding-right: 0px;
 	padding-left: 0px;
 
+}
+
+#messagesBox{
+	background-color: #5D4141;
+	position: fixed;
+	min-height: 1000px;
+	border-radius: 2px;
+	float: right;
+	padding-left: 12px;
+	padding-right: 12px;
+	box-shadow: -1px 0px 1px #AAA;
 }
 
 .homeObject {
@@ -84,7 +139,6 @@ html{
 #newsFeed{
 	padding: 0px 13px 5px 13px;
 }
-
 
 .likeBar {
 	height: 25px;
@@ -144,8 +198,8 @@ html{
 }
 
 .newsUnitText{
-	margin-top: 10px;
-	margin-bottom: 10px;
+	margin-top: 15px;
+	margin-bottom: 15px;
 }
 
 .newPostTextBox{

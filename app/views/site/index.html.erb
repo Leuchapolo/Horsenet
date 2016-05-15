@@ -1,22 +1,45 @@
 <div class = "container-fluid">
 	<div class = "row navbar" id = "homeNavbar">
 		
-		<div id = "SearchAndHomeItems" class = "col-md-4 homeNavbarItem">Search and Home</div>
-		<div class = "col-md-2" ></div>
-		<div id = "ProfileOptionsItems" class = "col-md-4 homeNavbarItem">Here are your profile options</div>
+		<div id = "searchAndHomeItems" class = "col-md-7 homeNavbarItem"><img id = "homeButton" src = "http://www.designfreelogoonline.com/wp-content/uploads/2014/11/00148-Horse-logo-design-free-logo-template-02.png" height = "40" width="40">
+			 <input id = "searchBar" type = "text" size = "50" placeholder="Search HorseNet">
+			 <span id = "searchButtonContainer">
+			 	<span class = "glyphicon glyphicon-search" id = "searchButton"></span>
+			 </span> 
+		</div>
+		<div id = "ProfileOptionsItems" class = "col-md-4 homeNavbarItem">
+			<span class = "ProfileOptionsItem" id = "ProfileOptionsItemsCurrentUser"><%= @current_user.name %></span>
+			<span class = "ProfileOptionsItem" id = "ProfileOptionsItemsHome">Home</span>
+			<span class = "ProfileOptionsItem" id = "ProfileNotificationsButtons">
+				<span id = "ProfileNotificationsButton" class = "glyphicon glyphicon-user"></span>
+				<span id = "ProfileNotificationsButton" class = "glyphicon glyphicon-envelope"></span>
+				<span id = "ProfileNotificationsButton" class = "glyphicon glyphicon-bell"></span>
+
+			</span>
+			<span class = "ProfileOptionsItem" id = "ProfileAccountOptions">
+				<span class = "glyphicon glyphicon-chevron-down"></span>
+			</span>
+		</div>
 		
 	</div>
-	<div class = "row" id = "homeNavbarBuffer">
-		<div class = "col-md-12"></div>
-	</div>
+	
 	
 	<div class = "row mainBoxes">
-		<div id = "favorites" class = "col-md-2  mainBox">Favorites</div>
-		<div id = "newsFeed" class = "col-md-7  mainBox">News Feed</div>
-		<div id = "messages" class = "col-md-3  mainBox">Messages</div>
+
+		<div class = "col-md-2  mainBox">
+			<div id = "favorites"> Browser </div>
+			<!-- Nested table of things roots to start from. Surfline Style how it keeps building out -->
+		</div>
+		<div class = "col-md-7  mainBox">
+			<div id = "newsFeed"> News Feed </div>
+		</div>
+		<div class = "col-md-3">
+			<div id = "messagesBox">
+				<div id = "messages" class = "mainBox"><a><b> Messages </b></a></div>
+			</div>
+		</div>
 	</div>
 
 <!-- Use a cork board for the background image -->
 </div>
-<%= @current_user %>
 <%= link_to('Sign Out', '/users/sign_out', method: :delete) %>

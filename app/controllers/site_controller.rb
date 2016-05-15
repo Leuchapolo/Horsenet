@@ -3,7 +3,8 @@ class SiteController < ApplicationController
   	unless current_user
   		redirect_to '/users/sign_in'
   	else
-  		@current_user = current_user.id
+  		@current_user = current_user
+
   		render 'index'
   	end
   end
