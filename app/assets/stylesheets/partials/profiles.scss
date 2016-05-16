@@ -10,7 +10,7 @@
 }
 
 .profileNavigationBar{
-	height: 40px;
+	
 	background-color: #FFFFFF;
 	border-top: 1px solid #AAA;
 	box-shadow: 1px 1px 1px #AAA;
@@ -30,15 +30,67 @@
 	padding-left: 12px;
 }
 
-.profileName{
+.profileNameAndButtons{
 	font-size: 20px;
 	color: #5D4141;
 	position: absolute;
-	bottom: 170px;
-
+	top: 73px;
+	width: 70%;
 	left: 250px;
+}
+
+.profileButtons{
+	
+	float: right;
+}
+
+.profileButton{
+	margin-left: 12px;
+}
+
+.profileBio{
+	margin-top: 15px;
+	font-size: 13px;
+	margin-left: 8px;
+	color: #000;
+}
+
+.messageButton{
+	background-color: #FFF;
+	border: 1px solid #AAA;
+	color: #000;
+}
+
+.profileNavigationBarButtons{
+	margin-left: 230px;
+	padding: 8px;
+
+}
+
+.profileNavigationBarButton{
+	padding-left: 12px;
+	padding-right: 12px;
+	border-right: 1px solid #AAA;
 }
 
 #profileTimeLine{
 	margin-top: 0px;
+}
+
+.infoBar{
+	height: 200px;
+	padding: 12px;
+	margin-top: 12px;
+	background-color: #FFF;
+
+}
+
+.infoBarHeader{
+	border-bottom: 1px solid #AAA;
+	color: #666;
+
+}
+
+.profileInfoDetail{
+	margin-top: 8px;
 }

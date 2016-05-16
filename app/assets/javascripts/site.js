@@ -16,20 +16,51 @@ $(document).ready(function(){
 function loadCurrentUserInfoThenSetup(){
 	$.get('/api/current_user', function(result){
   		Horsenet.CurrentUser = result
- 		setup()
+ 		setupPage()
 	});
 }
 
-function setup(){
+function setupPage(){
 	setupMakeNewPost();
 	if ($('#profileTimeLine').length == 0){
 		setupNewsPosts("posts/current_user_news");
 	} else {
-		console.log()
-		setupNewsPosts("user/" + document.CurrentProfile +"/posts")
+		loadProfileInfoThenSetup()
 	}
 
 	
+}
+
+function loadProfileInfoThenSetup(){
+	if (document.CurrentProfileType == "User")
+	{
+		$.get('/api/users/' + document.CurrentProfile, function(result){
+  		document.CurrentProfileInfo = result
+  		console.log(result)
+ 		setupProfileInfo()
+ 		setupNewsPosts("users/" + document.CurrentProfile +"/posts")
+		});	
+	}
+		
+}
+
+function setupProfileInfo(){
+	$('.profileName').text(document.CurrentProfileInfo.name);
+	$('.infoBars').append('<div class = "riderInfo infoBar homeObject"><div class = "infoBarHeader"> Rider Info</div></div>')
+		$('.riderInfo').append('<div class = "riderInfoInfo"></div>')
+			$('.riderInfoInfo').append('<div class = "profileInfoDetail"> Current Show: ' + document.CurrentProfileInfo.current_show + '</div>')
+			$('.riderInfoInfo').append('<div class = "profileInfoDetail"> Next Class: ' + document.CurrentProfileInfo.next_class + '</div>')
+			$('.riderInfoInfo').append('<div class = "profileInfoDetail"> Specialty: ' + document.CurrentProfileInfo.specialization + '</div>')
+
+	$('.infoBars').append('<div class = "userInfo infoBar homeObject"><div class = "infoBarHeader">User Info</div></div>')
+		$('.userInfo').append('<div class = "userInfoInfo"></div>')
+			$('.userInfoInfo').append('<div class = "profileInfoDetail"> Born In: ' + document.CurrentProfileInfo.place_of_birth + '</div>')
+			$('.userInfoInfo').append('<div class = "profileInfoDetail"> Lives In: ' + document.CurrentProfileInfo.current_place_of_residence + '</div>')
+			$('.userInfoInfo').append('<div class = "profileInfoDetail"> Work: ' + document.CurrentProfileInfo.work + '</div>')
+	$('.infoBars').append('<div class = "horsesInfo infoBar homeObject"><div class = "infoBarHeader">Horses </div></div>')
+	$('.profileNameAndButtons').append('<div class = "profileBio">' + document.CurrentProfileInfo.bio + '</div>')
+
+
 }
 
 function setupMakeNewPost(){

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160511183443) do
+ActiveRecord::Schema.define(version: 20160516182657) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,24 +36,34 @@ ActiveRecord::Schema.define(version: 20160511183443) do
   create_table "user_follows", force: :cascade do |t|
     t.integer  "follower_id"
     t.integer  "following_id"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
+    t.string   "following_type", default: "User"
   end
 
+  add_index "user_follows", ["following_id"], name: "index_user_follows_on_following_id", using: :btree
+
   create_table "users", force: :cascade do |t|
-    t.string   "email",                  default: "", null: false
-    t.string   "encrypted_password",     default: "", null: false
+    t.string   "email",                      default: "", null: false
+    t.string   "encrypted_password",         default: "", null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,  null: false
+    t.integer  "sign_in_count",              default: 0,  null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.inet     "current_sign_in_ip"
     t.inet     "last_sign_in_ip"
     t.string   "name"
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
+    t.datetime "created_at",                              null: false
+    t.datetime "updated_at",                              null: false
+    t.string   "place_of_birth"
+    t.string   "current_place_of_residence"
+    t.string   "work"
+    t.string   "current_show"
+    t.string   "next_class"
+    t.string   "specialization"
+    t.string   "bio"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

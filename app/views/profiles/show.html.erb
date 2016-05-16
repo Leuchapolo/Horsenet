@@ -1,5 +1,5 @@
 <!-- Profiles/Show.html.erb -->
-<script> document.CurrentProfile = <%= @current_profile %>;  </script>
+<script> document.CurrentProfile = <%= @current_profile %>; document.CurrentProfileType = "User";  </script>
 <div class = "container-fluid">
 	<div class = "row navbar" id = "homeNavbar">
 		
@@ -27,9 +27,25 @@
 	<div class = "row profileBarRow"> 
 		<div class = "col-md-9">
 			<div class = "profileBar">
+				<div class = "profileNameAndButtons">
+		 			<span class = "profileName"></span>
+		 			<span class = "profileButtons">
+		 				<button type="button" class="btn btn-success followButton profileButton">Following</button>
+		 				<button type="button" class="btn btn-secondary messageButton profileButton">Message</button>
+		 			</span>
+		 		</div>
 		 	</div>
-		 	<div class = "profileNavigationBar"><div class = "profileName">Michael<span></span><span></span></div></div>
-		 	<div class = "profilePictureHolder"></div></div>
+		 	<div class = "profileNavigationBar">
+		 		<div class = "profileNavigationBarButtons">
+		 			<span class = "profileNavigationBarButton"><a>Timeline</a></span>
+		 			<span class = "profileNavigationBarButton"><a>About</a></span>
+		 			<span class = "profileNavigationBarButton"><a>Classes</a></span>
+		 			<span class = "profileNavigationBarButton"><a>Photos/Videos</a></span>
+		 			<span class = "profileNavigationBarButton"><a>More</a></span>
+		 		</div>
+		 	</div>
+		 	<div class = "profilePictureHolder"></div>
+		</div>
 		<div class = "col-md-3">
 			<div id = "messagesBox">
 				<div  class = "messages mainBox"><a><b> Messages </b></a></div>
@@ -40,11 +56,11 @@
 	<div class = "row mainBoxes">
 
 		<div class = "col-md-3  mainBox">
-			<div class = "infoBars"> Info Bars </div>
+			<div class = "infoBars"></div>
 			<!-- Nested table of things roots to start from. Surfline Style how it keeps building out -->
 		</div>
 		<div class = "col-md-6  mainBox">
-			<div id = "profileTimeLine" class = "newsFeed"> News Feed </div>
+			<div id = "profileTimeLine" class = "newsFeed"></div>
 		</div>
 		
 	</div>
