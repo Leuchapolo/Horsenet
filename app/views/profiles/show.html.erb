@@ -1,3 +1,5 @@
+<!-- Profiles/Show.html.erb -->
+<script> document.CurrentProfile = <%= @current_profile %>;  </script>
 <div class = "container-fluid">
 	<div class = "row navbar" id = "homeNavbar">
 		
@@ -22,22 +24,29 @@
 		</div>
 		
 	</div>
-	
+	<div class = "row profileBarRow"> 
+		<div class = "col-md-9">
+			<div class = "profileBar">
+		 	</div>
+		 	<div class = "profileNavigationBar"><div class = "profileName">Michael<span></span><span></span></div></div>
+		 	<div class = "profilePictureHolder"></div></div>
+		<div class = "col-md-3">
+			<div id = "messagesBox">
+				<div  class = "messages mainBox"><a><b> Messages </b></a></div>
+			</div>
+		</div>
+	</div>
 	
 	<div class = "row mainBoxes">
 
-		<div class = "col-md-2  mainBox">
-			<div class = "favorites"> Browser </div>
+		<div class = "col-md-3  mainBox">
+			<div class = "infoBars"> Info Bars </div>
 			<!-- Nested table of things roots to start from. Surfline Style how it keeps building out -->
 		</div>
-		<div class = "col-md-7  mainBox">
-			<div class = "newsFeed"> News Feed </div>
+		<div class = "col-md-6  mainBox">
+			<div id = "profileTimeLine" class = "newsFeed"> News Feed </div>
 		</div>
-		<div class = "col-md-3">
-			<div id = "messagesBox">
-				<div class = "messages mainBox"><a><b> Messages </b></a></div>
-			</div>
-		</div>
+		
 	</div>
 
 <!-- Use a cork board for the background image -->

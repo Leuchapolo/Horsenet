@@ -9,6 +9,8 @@ class PostsController < ApplicationController
 
     def user_posts
       user =  User.find_by(id: params[:id])
+      p user
+      p params[:id]
       unless user
         render json: {error: "Cannot Find User"}
       else
@@ -17,7 +19,7 @@ class PostsController < ApplicationController
     end
 
     def create 
-      user = User.find_by(id: params[:original_poster_id].to_i);
+      user = User.find_by(id: params[:id]);
       unless user 
         render json: {error: "Could not find user"}
       else

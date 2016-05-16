@@ -1,0 +1,44 @@
+// Place all the styles related to the profiles controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.profileBar {
+	height: 220px;
+	background-color: #FFFED8;
+	
+}
+
+.profileNavigationBar{
+	height: 40px;
+	background-color: #FFFFFF;
+	border-top: 1px solid #AAA;
+	box-shadow: 1px 1px 1px #AAA;
+}
+
+.profilePictureHolder{
+	height: 160px;
+	width: 160px;
+	background-color: #AAA;
+	position: absolute;
+	bottom: 20px;
+	left: 45px;
+}
+
+.profileBarRow{
+	
+	padding-left: 12px;
+}
+
+.profileName{
+	font-size: 20px;
+	color: #5D4141;
+	position: absolute;
+	bottom: 170px;
+
+	left: 250px;
+}
+
+#profileTimeLine{
+	margin-top: 0px;
+}
