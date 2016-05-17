@@ -1,6 +1,7 @@
 class UserInfoController < ApplicationController
   def show_public_info
-  	user_info = User.find_by(id: params[:id])
-  	render json: user_info
+  	user = User.find_by(id: params[:id])
+  	response = {user: user, horses: user.horses}
+  	render json: response
   end
 end

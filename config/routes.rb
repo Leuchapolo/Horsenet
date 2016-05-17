@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
   
   
-  get '/:id', to: 'profiles#show'
-
+  
+  get '/profile/:type/:id', to: 'profiles#show'
+  get "/", to: 'site#index'
   get 'api/current_user' => "site#current_user_id"
 
   root 'site#index'
@@ -10,12 +11,15 @@ Rails.application.routes.draw do
   devise_for :users
   get '/api/posts/current_user_news', to: 'posts#user_news'
   get '/api/users/:id/posts', to: 'posts#user_posts'
+  get '/api/horses/:id/posts', to: 'posts#horse_posts'
   get '/api/users/:id', to: 'user_info#show_public_info'
   scope '/api' do 
+    resources :horses
     resources :user_follows
     resources :posts
     resources :post_tags
   end
+  
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

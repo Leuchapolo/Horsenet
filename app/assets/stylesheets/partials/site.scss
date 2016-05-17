@@ -14,12 +14,16 @@ html{
 
 .container-fluid {
 	background-color: #EEEEEE;
-	font-family: Verdana;
+	font-family: Tahoma;
+}
+
+textarea{
+	background-color: #FAFAFA
 }
 
 .navbar {
 	
-	background-color: #7CF;
+	background-color: #BDE6FF;
 	text-align: center;
 	
 	
@@ -90,7 +94,8 @@ html{
 
 #searchButtonContainer{
 	padding: 3px;
-	background-color: #7CF;
+	background-color: #BDE6FF;
+
 }
 
 .mainBoxes{
@@ -114,12 +119,14 @@ html{
 
 .favorites{
 	margin-top: 60px;
+	
+
 }
 
 
 
 #messagesBox{
-	background-color: #5D4141;
+	background-color: #946B6B;
 	position: fixed;
 	min-height: 1000px;
 	border-radius: 2px;
@@ -131,7 +138,7 @@ html{
 
 .homeObject {
 	width: 100%;
-	background-color: #FFF;
+	background-color: #FAFAFA;
 
 	margin-top: 12px;
 	margin-bottom: 8px;
@@ -149,23 +156,23 @@ html{
 	margin-top: 60px;
 }
 
+
 .messages{
 	margin-top: 60px;
 }
 
 .likeBar {
-	height: 25px;
-	border-top: 0.5px solid #BCF;
+	
+	border-top: 0.5px solid #CCC;
+	
 }
 
-.likeBar{
-	
-	padding: 6px;
-}
 
 .likeBarButtons{
 
 	text-align: center;
+	
+	padding: 8px;
 }
 
 .likeBarButton{
@@ -176,7 +183,15 @@ html{
 
 }
 
-
+.postLikesAndComments{
+	background-color: #F0F0F0;
+	font-size: 14px;
+	border: 1px solid #DDD;
+	
+	text-align: left;
+	padding: 12px;
+	padding-bottom: 0px;
+}
 
 .newsPostHeaderInfoText{
 	
@@ -208,6 +223,19 @@ html{
 	margin-left: 3px;
 	padding-bottom: 8px;
 	border-bottom: 1px solid #CCC; 
+}
+
+.newPostPhotoOptionIcon{
+	color: #717171;
+}
+.newsUnit{
+	min-height: 100px;
+	padding-bottom: 0px;
+}
+
+.newsUnitPost{
+	margin-bottom: 0px;
+	padding-bottom: 0px;
 }
 
 .newsUnitText{

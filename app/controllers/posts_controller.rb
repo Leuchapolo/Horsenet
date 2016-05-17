@@ -9,13 +9,22 @@ class PostsController < ApplicationController
 
     def user_posts
       user =  User.find_by(id: params[:id])
-      p user
-      p params[:id]
+      
       unless user
         render json: {error: "Cannot Find User"}
       else
         render json: createNewsResponse(user.posts)
       end
+    end
+
+    def horse_posts
+      horse = Horse.find_by(id: params[:id])
+      unless horse
+        render json: {error: "Cannot Find User"}
+      else
+        render json: createNewsResponse(horse.posts)
+      end
+
     end
 
     def create 

@@ -1,9 +1,9 @@
 <!-- Profiles/Show.html.erb -->
-<script> document.CurrentProfile = <%= @current_profile %>; document.CurrentProfileType = "User";  </script>
+<script> document.CurrentProfile = <%= @current_profile %>; document.CurrentProfileType = "<%= @current_profile_type %>" ;  </script>
 <div class = "container-fluid">
 	<div class = "row navbar" id = "homeNavbar">
 		
-		<div id = "searchAndHomeItems" class = "col-md-7 homeNavbarItem"><img id = "homeButton" src = "http://www.designfreelogoonline.com/wp-content/uploads/2014/11/00148-Horse-logo-design-free-logo-template-02.png" height = "40" width="40">
+		<div id = "searchAndHomeItems" class = "col-md-7 homeNavbarItem"><a href = "/"> <img id = "homeButton" src = "http://www.designfreelogoonline.com/wp-content/uploads/2014/11/00148-Horse-logo-design-free-logo-template-02.png" height = "40" width="40"></a>
 			 <input id = "searchBar" type = "text" size = "50" placeholder="Search HorseNet">
 			 <span id = "searchButtonContainer">
 			 	<span class = "glyphicon glyphicon-search" id = "searchButton"></span>
@@ -16,7 +16,6 @@
 				<span id = "ProfileNotificationsButton" class = "glyphicon glyphicon-user"></span>
 				<span id = "ProfileNotificationsButton" class = "glyphicon glyphicon-envelope"></span>
 				<span id = "ProfileNotificationsButton" class = "glyphicon glyphicon-bell"></span>
-
 			</span>
 			<span class = "ProfileOptionsItem" id = "ProfileAccountOptions">
 				<span class = "glyphicon glyphicon-chevron-down"></span>
@@ -25,7 +24,7 @@
 		
 	</div>
 	<div class = "row profileBarRow"> 
-		<div class = "col-md-9">
+		<div class = "col-md-9 profileHeader">
 			<div class = "profileBar">
 				<div class = "profileNameAndButtons">
 		 			<span class = "profileName"></span>
@@ -35,6 +34,12 @@
 		 			</span>
 		 		</div>
 		 	</div>
+		 	<div class = "followersAndPosts">
+				<span class = "profileFollowerCount profileButton"><b> <%= @current_profile_info.followers.count %></b> Followers </span>
+				<span class = "profilePostCount profileButton"> <b><%= @current_profile_info.posts.count %></b> Posts </span>
+				<span class = "profileClassesCount profileButton"><b> 0 </b>Classes Logged </span>
+
+			</div>
 		 	<div class = "profileNavigationBar">
 		 		<div class = "profileNavigationBarButtons">
 		 			<span class = "profileNavigationBarButton"><a>Timeline</a></span>
