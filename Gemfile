@@ -14,6 +14,10 @@ gem 'coffee-rails', '~> 4.1.0'
 # gem 'therubyracer', platforms: :ruby
 gem 'browserify-rails', '~> 0.9.1'
 
+
+#Carrier wave is for file attachments
+gem 'carrierwave'
+
 gem 'rails_12factor', group: :production
 
 gem 'bootstrap-sass', '~> 3.2.0'

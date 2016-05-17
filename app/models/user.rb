@@ -3,11 +3,12 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
+ 
 
   # If user is the following_id, that is the list of the followers
   has_many :user_followers, class_name: "UserFollow", foreign_key: "following_id"
-  # If user is the follower_id, that is the list of the follow_ings_
   
+  mount_uploader :profile_picture, MediaFileUploader
 
   has_many :horses
 
