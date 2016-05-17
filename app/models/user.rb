@@ -9,11 +9,12 @@ class User < ActiveRecord::Base
   has_many :user_followers, class_name: "UserFollow", foreign_key: "following_id"
   
   mount_uploader :profile_picture, MediaFileUploader
+  has_many :profile_media_tags, as: :mediable
 
   has_many :horses
 
   has_many :followers,  through: :user_followers
-  has_many :followings, as: :following, class_name: "UserFollow", foreign_key: "follower_id"
+  has_many :followings, class_name: "UserFollow", foreign_key: "follower_id"
 
   has_many :post_tags, as: :taggable
   has_many :posts, through: :post_tags

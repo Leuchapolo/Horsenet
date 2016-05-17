@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160517204246) do
+ActiveRecord::Schema.define(version: 20160517215434) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -42,6 +42,16 @@ ActiveRecord::Schema.define(version: 20160517204246) do
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
   end
+
+  create_table "profile_media_tags", force: :cascade do |t|
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.string   "media_file"
+    t.integer  "mediable_id"
+    t.string   "mediable_type"
+  end
+
+  add_index "profile_media_tags", ["mediable_type", "mediable_id"], name: "index_profile_media_tags_on_mediable_type_and_mediable_id", using: :btree
 
   create_table "user_follows", force: :cascade do |t|
     t.integer  "follower_id"

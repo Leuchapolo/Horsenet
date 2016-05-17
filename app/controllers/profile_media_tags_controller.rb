@@ -1,0 +1,2 @@
+class ProfileMediaTagsController < ApplicationController
+end

@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   
   
   
+  resources :profile_media_tags
   get '/profile/:type/:id', to: 'profiles#show'
   get "/", to: 'site#index'
   get 'api/current_user' => "site#current_user_id"
