@@ -53,6 +53,13 @@ function loadProfileInfoThenSetup(){
 
 function setupProfileInfo(){
 	$('.profileName').text(document.CurrentProfileInfo.user.name);
+	var currentUserPicture = ""
+	if (document.CurrentProfileInfo.user.profile_picture.url == null){
+			currentUserPicture = "http://orig06.deviantart.net/e0a5/f/2010/221/e/7/darth_vader_facebook_by_piorun.png";
+		} else {
+			currentUserPicture = document.CurrentProfileInfo.user.profile_picture.url;
+		}
+	$('.profilePictureHolder').append('<img class = "currentProfilePicture" height = "160" width = "160" src = "' + currentUserPicture + '">')
 	$('.infoBars').append('<div class = "riderInfo infoBar homeObject"><div class = "infoBarHeader"> Rider Info</div></div>')
 		$('.riderInfo').append('<div class = "riderInfoInfo"></div>')
 			$('.riderInfoInfo').append('<div class = "profileInfoDetail"> Current Show: ' + document.CurrentProfileInfo.user.current_show + '</div>')
@@ -61,7 +68,7 @@ function setupProfileInfo(){
 	$('.infoBars').append('<div class = "horsesInfo infoBar homeObject"><div class = "infoBarHeader">Horses </div></div>')
 	for (i in document.CurrentProfileInfo.horses)
 	{	
-		$('.horsesInfo').append('<div class = "usersHorse profileInfoDetail"> <img class = "newsPostHeaderProfPic" src = "http://www.samjamiesonequine.co.uk/wp-content/uploads/2015/02/horse-jumping-800x450.jpg" height = "40" width = "40"> <div class = "usersHorseText"><a>' + document.CurrentProfileInfo.horses[i].name + '</a>  - <span class = "horseSpecialty"> ' + document.CurrentProfileInfo.horses[i].specialty + '</span></div></div>')
+		$('.horsesInfo').append('<div class = "usersHorse profileInfoDetail"> <img class = "newsPostHeaderProfPic" src = "' + document.CurrentProfileInfo.horses[i].profile_picture.url + '" height = "40" width = "40"> <div class = "usersHorseText"><a>' + document.CurrentProfileInfo.horses[i].name + '</a>  - <span class = "horseSpecialty"> ' + document.CurrentProfileInfo.horses[i].specialty + '</span></div></div>')
 	}
 	$('.infoBars').append('<div class = "userInfo infoBar homeObject"><div class = "infoBarHeader">User Info</div></div>')
 		$('.userInfo').append('<div class = "userInfoInfo"></div>')
@@ -80,17 +87,17 @@ function setupHorseProfileInfo(){
 			$('.horseInfoInfo').append('<div class = "profileInfoDetail"> Birth Year: ' + document.CurrentProfileInfo.horse.birth_year + '</div>')
 			$('.horseInfoInfo').append('<div class = "profileInfoDetail"> Specialty: ' + document.CurrentProfileInfo.horse.specialty + '</div>')
 	$('.infoBars').append('<div class = "riderInfo infoBar homeObject"><div class = "infoBarHeader">Rider </div></div>')
-	$('.riderInfo').append('<div class = "horsesRider profileInfoDetail"> <img class = "newsPostHeaderProfPic" src = "http://tvruckus.com/wp-content/uploads/2015/06/TJ-Miller-Ehrlich-bachman-Silicon-valley.jpeg" height = "40" width = "40"> <div class = "usersHorseText"><a>' + document.CurrentProfileInfo.rider.name + '</a>  - <span class = "horseSpecialty"> ' + document.CurrentProfileInfo.rider.specialization + '</span></div></div>')
+	$('.riderInfo').append('<div class = "horsesRider profileInfoDetail"> <img class = "newsPostHeaderProfPic" src = "' + document.CurrentProfileInfo.rider.profile_picture.url + '" height = "40" width = "40"> <div class = "usersHorseText"><a>' + document.CurrentProfileInfo.rider.name + '</a>  - <span class = "horseSpecialty"> ' + document.CurrentProfileInfo.rider.specialization + '</span></div></div>')
 
 }
 
 function setupMakeNewPost(){
 	$('.newsFeed').append('<div class = "homeObject" id = "newsUnitNewPost"></div>');
 	$('#newsUnitNewPost').append('<div class = "newPostPhotoOptions"></div>')
-	$('.newPostPhotoOptions').append('<span id = "newPostPhotoOptionUpdateStatus"><a class = "temporaryDisableA" href = ""><span class = "glyphicon glyphicon-pencil newPostPhotoOptionIcon"></span>  Update Status</a> </span>')
+	$('.newPostPhotoOptions').append('<span id = "newPostPhotoOptionUpdateStatus"><a class = "temporaryDisableNewPostOption" href = ""><span class = "glyphicon glyphicon-pencil newPostPhotoOptionIcon"></span>  Update Status</a> </span>')
 	$('.newPostPhotoOptions').append('<span id = "newPostPhotoOptionAddPhotoVideo"><input type = "file" id = "postFileUploadInput"><a class = "addPhotoLink" href = ""><span class = "glyphicon glyphicon-picture newPostPhotoOptionIcon"></span>  Add Photo/Video</a> </span>')
-	$('.newPostPhotoOptions').append('<span id = "newPostPhotoOptionCreateAlbum"><a class = "temporaryDisableA" href = ""><span class = "glyphicon glyphicon-book newPostPhotoOptionIcon"></span>  Create Album</a> </span>')
-	$('.temporaryDisableA').click(function(event){
+	$('.newPostPhotoOptions').append('<span id = "newPostPhotoOptionCreateAlbum"><a class = "temporaryDisableNewPostOption" href = ""><span class = "glyphicon glyphicon-book newPostPhotoOptionIcon"></span>  Create Album</a> </span>')
+	$('.temporaryDisableNewPostOption').click(function(event){
 		event.preventDefault()
 		
 	})
@@ -100,7 +107,7 @@ function setupMakeNewPost(){
 		
 	})
 	$('#newsUnitNewPost').append('<div class = "newPostTextProfPic"></div>')
-	$('.newPostTextProfPic').append('<img class = "newsPostHeaderProfPic" src = "https://s-media-cache-ak0.pinimg.com/564x/c6/7c/6f/c67c6fd92582294f775b16395de246ea.jpg" height = "40" width = "40">')
+	$('.newPostTextProfPic').append('<img class = "newsPostHeaderProfPic" src = "' + Horsenet.CurrentUser.profile_picture.url + '" height = "40" width = "40">')
 	$('.newPostTextProfPic').append('<div class = "newPostTextBox"><textarea class = "newPostText" placeholder = "Write your post here"></textarea></div>')
 	autosize($('textarea'))
 	$('#newsUnitNewPost').append('<div class = "newPostActions"></div>')
@@ -190,7 +197,13 @@ var fillNews = function(data){
 			postersHtml += ' and <a href = ""> ' +  othersCount + ' others</a>'
 		}
 		postersHtml += '<br>'
-		$("#" + postHeaderInfo).prepend('<img class = "newsPostHeaderProfPic" src = "https://s-media-cache-ak0.pinimg.com/564x/c6/7c/6f/c67c6fd92582294f775b16395de246ea.jpg" height = "40" width = "40">')
+		var opPicture = ""
+		if (data[i].post.original_poster.profile_picture.url == null){
+			opPicture = "http://orig06.deviantart.net/e0a5/f/2010/221/e/7/darth_vader_facebook_by_piorun.png";
+		} else {
+			opPicture = data[i].post.original_poster.profile_picture.url;
+		}
+		$("#" + postHeaderInfo).prepend('<img class = "newsPostHeaderProfPic" src = "' + opPicture + '" height = "40" width = "40">')
 		$("#" + postHeaderInfoText).append(postersHtml);
 		$("#" + postHeaderInfoPosters).append('<span class = "newsPostHeaderTime">' + data[i].post.created_at + ' </span>')
 		var newsUnitText = newsUnit + "text"
@@ -205,7 +218,13 @@ var fillNews = function(data){
 		//adding Comment box
 		var commentBox = newsUnit + "commentBox"
 		$('#' + postLikesAndComments).append('<div class = "newPostTextProfPic" id = "' + commentBox +'"></div>')
-		$('#' + commentBox).append('<img class = "newsPostHeaderProfPic" src = "https://s-media-cache-ak0.pinimg.com/564x/c6/7c/6f/c67c6fd92582294f775b16395de246ea.jpg" height = "40" width = "40">')
+		var currentUserPicture = ""
+		if (Horsenet.CurrentUser.profile_picture.url == null){
+			currentUserPicture = "http://orig06.deviantart.net/e0a5/f/2010/221/e/7/darth_vader_facebook_by_piorun.png";
+		} else {
+			currentUserPicture = Horsenet.CurrentUser.profile_picture.url;
+		}
+		$('#' + commentBox).append('<img class = "newsPostHeaderProfPic" src = "' + currentUserPicture + '" height = "40" width = "40">')
 		$('#' + commentBox).append('<div class = "newPostTextBox"><textarea class = "newPostText" placeholder = "Write your post here"></textarea></div>')
 		autosize($('textarea'))
 	}
