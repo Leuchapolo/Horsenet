@@ -1,0 +1,2 @@
+module PostMediaTagsHelper
+end

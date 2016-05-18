@@ -87,9 +87,18 @@ function setupHorseProfileInfo(){
 function setupMakeNewPost(){
 	$('.newsFeed').append('<div class = "homeObject" id = "newsUnitNewPost"></div>');
 	$('#newsUnitNewPost').append('<div class = "newPostPhotoOptions"></div>')
-	$('.newPostPhotoOptions').append('<span id = "newPostPhotoOptionUpdateStatus"><a href = ""><span class = "glyphicon glyphicon-pencil newPostPhotoOptionIcon"></span>  Update Status</a> </span>')
-	$('.newPostPhotoOptions').append('<span id = "newPostPhotoOptionAddPhotoVideo"><a href = ""><span class = "glyphicon glyphicon-picture newPostPhotoOptionIcon"></span>  Add Photo/Video</a> </span>')
-	$('.newPostPhotoOptions').append('<span id = "newPostPhotoOptionCreateAlbum"><a href = ""><span class = "glyphicon glyphicon-book newPostPhotoOptionIcon"></span>  Create Album</a> </span>')
+	$('.newPostPhotoOptions').append('<span id = "newPostPhotoOptionUpdateStatus"><a class = "temporaryDisableA" href = ""><span class = "glyphicon glyphicon-pencil newPostPhotoOptionIcon"></span>  Update Status</a> </span>')
+	$('.newPostPhotoOptions').append('<span id = "newPostPhotoOptionAddPhotoVideo"><input type = "file" id = "postFileUploadInput"><a class = "addPhotoLink" href = ""><span class = "glyphicon glyphicon-picture newPostPhotoOptionIcon"></span>  Add Photo/Video</a> </span>')
+	$('.newPostPhotoOptions').append('<span id = "newPostPhotoOptionCreateAlbum"><a class = "temporaryDisableA" href = ""><span class = "glyphicon glyphicon-book newPostPhotoOptionIcon"></span>  Create Album</a> </span>')
+	$('.temporaryDisableA').click(function(event){
+		event.preventDefault()
+		
+	})
+	$('.addPhotoLink').click(function(event){
+		event.preventDefault()
+		$('#postFileUploadInput').trigger('click');
+		
+	})
 	$('#newsUnitNewPost').append('<div class = "newPostTextProfPic"></div>')
 	$('.newPostTextProfPic').append('<img class = "newsPostHeaderProfPic" src = "https://s-media-cache-ak0.pinimg.com/564x/c6/7c/6f/c67c6fd92582294f775b16395de246ea.jpg" height = "40" width = "40">')
 	$('.newPostTextProfPic').append('<div class = "newPostTextBox"><textarea class = "newPostText" placeholder = "Write your post here"></textarea></div>')
@@ -97,6 +106,8 @@ function setupMakeNewPost(){
 	$('#newsUnitNewPost').append('<div class = "newPostActions"></div>')
 	$('.newPostActions').append('<span class = "newPostActionsTagButtons"><span class="glyphicon glyphicon-tag newPostTagButton" aria-hidden="true"></span></span>')
 	$('.newPostActions').append('<button type="button" class="btn btn-primary postNewPostButton">Post</button>');
+	
+
 	$('.postNewPostButton').click(function(){
 		$.ajax({
 			url: "api/posts",
@@ -105,6 +116,7 @@ function setupMakeNewPost(){
 			data: {
 				text: $('.newPostText').val(),
 				original_poster_id: Horsenet.CurrentUser.id
+				
 			},
 			success: function(data){
 				$('.newPostText').val("");
@@ -187,7 +199,7 @@ var fillNews = function(data){
 		$("#" + newsUnitPost).append('<div id = "' + newsUnitLikeBar +'" class = "likeBar"></div>')
 		var newsUnitLikeBarButtons = newsUnitLikeBar + "Buttons";
 		$("#" + newsUnitLikeBar).append('<div id = "' + newsUnitLikeBarButtons + '" class = "likeBarButtons"></div>')
-		$("#" + newsUnitLikeBarButtons).append('<span class = "likeBarButton"><span class = "glyphicon glyphicon-thumbs-up" ></span></span><span class = "likeBarButton"><span class = "glyphicon glyphicon-comment" ></span></span><span class = "likeBarButton"><span class = "glyphicon glyphicon-share" ></span></span>')
+		$("#" + newsUnitLikeBarButtons).append('<span class = "likeBarButton"><span class = "glyphicon glyphicon-thumbs-up" ></span>  Like</span><span class = "likeBarButton"><span class = "glyphicon glyphicon-comment" ></span>  Comment</span><span class = "likeBarButton"><span class = "glyphicon glyphicon-share" ></span>  Share</span>')
 		var postLikesAndComments = newsUnit + 'postLikesAndComments'
 		$("#" + newsUnit).append('<div class = "postLikesAndComments" id = "'+ postLikesAndComments + '"><a> <span class = "glyphicon glyphicon-heart"></span> Taco and 12 others </a></div>')
 		//adding Comment box

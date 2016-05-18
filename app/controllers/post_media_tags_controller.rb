@@ -1,0 +1,2 @@
+class PostMediaTagsController < ApplicationController
+end

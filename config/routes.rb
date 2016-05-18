@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   
   
   
+  resources :post_media_tags
   resources :profile_media_tags
   get '/profile/:type/:id', to: 'profiles#show'
   get "/", to: 'site#index'
