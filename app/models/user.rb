@@ -11,6 +11,7 @@ class User < ActiveRecord::Base
   mount_uploader :profile_picture, MediaFileUploader
   has_many :profile_media_tags, as: :mediable
 
+
   has_many :horses
 
   has_many :followers,  through: :user_followers
@@ -18,6 +19,8 @@ class User < ActiveRecord::Base
 
   has_many :post_tags, as: :taggable
   has_many :posts, through: :post_tags
+
+  has_many :post_media_tags, through: :posts
   
 
 end

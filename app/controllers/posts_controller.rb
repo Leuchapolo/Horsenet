@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
 	def user_news
-  		posts = Post.includes(:original_poster, post_tags: :user_follows).where(user_follows: {follower_id: current_user.id})
+  		posts = Post.includes(:original_poster, post_tags: :user_follows).where(user_follows: {follower_id: current_user.id}).order("post_tags.created_at DESC")
   		
       
   		render json: createNewsResponse(posts)
@@ -28,7 +28,7 @@ class PostsController < ApplicationController
     end
 
     def create 
-      user = User.find_by(id: params[:id]);
+      user = User.find_by(id: params[:original_poster_id]);
       unless user 
         render json: {error: "Could not find user"}
       else

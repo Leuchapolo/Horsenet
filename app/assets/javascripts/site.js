@@ -20,8 +20,10 @@ function loadCurrentUserInfoThenSetup(){
 
 function setupPage(){
 	setupMakeNewPost();
+
 	if ($('#profileTimeLine').length == 0){
 		setupNewsPosts("posts/current_user_news");
+
 	} else {
 		loadProfileInfoThenSetup()
 	}
@@ -95,7 +97,7 @@ function setupMakeNewPost(){
 	$('.newsFeed').append('<div class = "homeObject" id = "newsUnitNewPost"></div>');
 	$('#newsUnitNewPost').append('<div class = "newPostPhotoOptions"></div>')
 	$('.newPostPhotoOptions').append('<span id = "newPostPhotoOptionUpdateStatus"><a class = "temporaryDisableNewPostOption" href = ""><span class = "glyphicon glyphicon-pencil newPostPhotoOptionIcon"></span>  Update Status</a> </span>')
-	$('.newPostPhotoOptions').append('<span id = "newPostPhotoOptionAddPhotoVideo"><input type = "file" id = "postFileUploadInput"><a class = "addPhotoLink" href = ""><span class = "glyphicon glyphicon-picture newPostPhotoOptionIcon"></span>  Add Photo/Video</a> </span>')
+	$('.newPostPhotoOptions').append('<span id = "newPostPhotoOptionAddPhotoVideo"><input type = "file" onchange = "handleFile(this.files)" id = "postFileUploadInput"><a class = "addPhotoLink" href = ""><span class = "glyphicon glyphicon-picture newPostPhotoOptionIcon"></span>  Add Photo/Video</a> </span>')
 	$('.newPostPhotoOptions').append('<span id = "newPostPhotoOptionCreateAlbum"><a class = "temporaryDisableNewPostOption" href = ""><span class = "glyphicon glyphicon-book newPostPhotoOptionIcon"></span>  Create Album</a> </span>')
 	$('.temporaryDisableNewPostOption').click(function(event){
 		event.preventDefault()
@@ -116,6 +118,7 @@ function setupMakeNewPost(){
 	
 
 	$('.postNewPostButton').click(function(){
+
 		$.ajax({
 			url: "api/posts",
 			method: "POST",
@@ -127,7 +130,7 @@ function setupMakeNewPost(){
 			},
 			success: function(data){
 				$('.newPostText').val("");
-				
+				location.reload()
 			}
 		})
 	})
@@ -228,4 +231,8 @@ var fillNews = function(data){
 		$('#' + commentBox).append('<div class = "newPostTextBox"><textarea class = "newPostText" placeholder = "Write your post here"></textarea></div>')
 		autosize($('textarea'))
 	}
+}
+
+function handleFile(file){
+	console.log(file)
 }

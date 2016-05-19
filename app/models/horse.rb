@@ -2,6 +2,7 @@ class Horse < ActiveRecord::Base
 	belongs_to :user
 	has_many :post_tags, as: :taggable
   	has_many :posts, through: :post_tags
+ 	has_many :post_media_tags, through: :posts
 
   	mount_uploader :profile_picture, MediaFileUploader
   	has_many :profile_media_tags, as: :mediable
