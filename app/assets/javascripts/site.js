@@ -70,7 +70,7 @@ function setupProfileInfo(){
 	$('.infoBars').append('<div class = "horsesInfo infoBar homeObject"><div class = "infoBarHeader">Horses </div></div>')
 	for (i in document.CurrentProfileInfo.horses)
 	{	
-		$('.horsesInfo').append('<div class = "usersHorse profileInfoDetail"> <img class = "newsPostHeaderProfPic" src = "' + document.CurrentProfileInfo.horses[i].profile_picture.url + '" height = "40" width = "40"> <div class = "usersHorseText"><a>' + document.CurrentProfileInfo.horses[i].name + '</a>  - <span class = "horseSpecialty"> ' + document.CurrentProfileInfo.horses[i].specialty + '</span></div></div>')
+		$('.horsesInfo').append('<div class = "usersHorse profileInfoDetail"> <img class = "newsPostHeaderProfPic" src = "' + document.CurrentProfileInfo.horses[i].profile_picture.url + '" height = "40" width = "40"> <div class = "usersHorseText"><a href = "/profile/horse/' + document.CurrentProfileInfo.horses[i].id + '">' + document.CurrentProfileInfo.horses[i].name + '</a>  - <span class = "horseSpecialty"> ' + document.CurrentProfileInfo.horses[i].specialty + '</span></div></div>')
 	}
 	$('.infoBars').append('<div class = "userInfo infoBar homeObject"><div class = "infoBarHeader">User Info</div></div>')
 		$('.userInfo').append('<div class = "userInfoInfo"></div>')
@@ -84,12 +84,19 @@ function setupProfileInfo(){
 
 function setupHorseProfileInfo(){
 	$('.profileName').text(document.CurrentProfileInfo.horse.name);
+	var currentUserPicture = ""
+	if (document.CurrentProfileInfo.horse.profile_picture.url == null){
+		currentUserPicture = "http://orig06.deviantart.net/e0a5/f/2010/221/e/7/darth_vader_facebook_by_piorun.png";
+	} else {
+		currentUserPicture = document.CurrentProfileInfo.horse.profile_picture.url;
+	}
+	$('.profilePictureHolder').append('<img class = "currentProfilePicture" height = "160" width = "160" src = "' + currentUserPicture + '">')
 	$('.infoBars').append('<div class = "horseInfo infoBar homeObject"><div class = "infoBarHeader"> Horse Info</div></div>')
 		$('.horseInfo').append('<div class = "horseInfoInfo"></div>')
 			$('.horseInfoInfo').append('<div class = "profileInfoDetail"> Birth Year: ' + document.CurrentProfileInfo.horse.birth_year + '</div>')
 			$('.horseInfoInfo').append('<div class = "profileInfoDetail"> Specialty: ' + document.CurrentProfileInfo.horse.specialty + '</div>')
 	$('.infoBars').append('<div class = "riderInfo infoBar homeObject"><div class = "infoBarHeader">Rider </div></div>')
-	$('.riderInfo').append('<div class = "horsesRider profileInfoDetail"> <img class = "newsPostHeaderProfPic" src = "' + document.CurrentProfileInfo.rider.profile_picture.url + '" height = "40" width = "40"> <div class = "usersHorseText"><a>' + document.CurrentProfileInfo.rider.name + '</a>  - <span class = "horseSpecialty"> ' + document.CurrentProfileInfo.rider.specialization + '</span></div></div>')
+	$('.riderInfo').append('<div class = "horsesRider profileInfoDetail"> <img class = "newsPostHeaderProfPic" src = "' + document.CurrentProfileInfo.rider.profile_picture.url + '" height = "40" width = "40"> <div class = "usersHorseText"><a href = "/profile/user/' + document.CurrentProfileInfo.rider.id + '">' + document.CurrentProfileInfo.rider.name + '</a>  - <span class = "horseSpecialty"> ' + document.CurrentProfileInfo.rider.specialization + '</span></div></div>')
 
 }
 
@@ -118,6 +125,11 @@ function setupMakeNewPost(){
 	
 
 	$('.postNewPostButton').click(function(){
+		var file = document.NewPostFile
+		console.log(file)
+		if (file == undefined){
+			file = "null";
+		}
 
 		$.ajax({
 			url: "api/posts",
@@ -125,7 +137,8 @@ function setupMakeNewPost(){
 			error: function(error){console.log(error)},
 			data: {
 				text: $('.newPostText').val(),
-				original_poster_id: Horsenet.CurrentUser.id
+				original_poster_id: Horsenet.CurrentUser.id,
+				file: "null"
 				
 			},
 			success: function(data){
@@ -234,5 +247,20 @@ var fillNews = function(data){
 }
 
 function handleFile(file){
-	console.log(file)
+	
+	
+  	var url = ""
+  	var file    = file[0];
+ 	var reader  = new FileReader();
+
+  	reader.addEventListener("load", function () {
+  		document.NewPostFile = reader.result
+    	$('.newPostTextBox').after('    + <img src = "' + reader.result + '" height = "40" width = "40">')
+  	}, false);
+
+ 	if (file) {
+    	reader.readAsDataURL(file);
+  	}
+
+	
 }

@@ -1,11 +1,12 @@
 class PostsController < ApplicationController
-	def user_news
+	 def user_news
   		posts = Post.includes(:original_poster, post_tags: :user_follows).where(user_follows: {follower_id: current_user.id}).order("post_tags.created_at DESC")
   		
       
   		render json: createNewsResponse(posts)
 
   	end
+
 
     def user_posts
       user =  User.find_by(id: params[:id])
@@ -34,6 +35,13 @@ class PostsController < ApplicationController
       else
         unless params[:text] == ""
           post = Post.new(text: params[:text], original_poster: user)
+          pic_post_tag = post.post_media_tags.new
+          unless params[:file] == "null"
+            
+            pic_post_tag.media_file = params[:file]
+            pic_post_tag.save
+          end
+
           post.save
           unless post.errors.messages == {}
             #print error
