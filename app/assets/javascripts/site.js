@@ -126,26 +126,53 @@ function setupMakeNewPost(){
 
 	$('.postNewPostButton').click(function(){
 		var file = document.NewPostFile
-		console.log(file)
 		if (file == undefined){
 			file = "null";
 		}
 
+		var formData = new FormData()
+		
+		formData.append('post[media_file]', file);
+		formData.append('post[text]', $('.newPostText').val());
+		formData.append('post[original_poster_id]', Horsenet.CurrentUser.id);
+		
+
 		$.ajax({
-			url: "api/posts",
-			method: "POST",
-			error: function(error){console.log(error)},
-			data: {
-				text: $('.newPostText').val(),
-				original_poster_id: Horsenet.CurrentUser.id,
-				file: "null"
+		  url: "api/posts",
+		  data: formData,
+		  cache: false,
+		  contentType: false,
+		  processData: false,
+		  method: 'POST',
+		  success: function(data){
+		  	console.log("Printing data")
+		  	console.log(data)
+		  	$('.newPostText').val("");
+			//location.reload()
+		  },
+		  error: function(error){
+		  	console.log("Printing error")
+		  	console.log(error)
+		  }
+		});
+
+
+
+		// $.ajax({
+		// 	url: "api/posts",
+		// 	method: "POST",
+		// 	error: function(error){console.log(error)},
+		// 	data: {
+		// 		text: $('.newPostText').val(),
+		// 		original_poster_id: Horsenet.CurrentUser.id,
+		// 		file: "null"
 				
-			},
-			success: function(data){
-				$('.newPostText').val("");
-				location.reload()
-			}
-		})
+		// 	},
+		// 	success: function(data){
+		// 		$('.newPostText').val("");
+		// 		location.reload()
+		// 	}
+		// })
 	})
 
 

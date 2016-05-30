@@ -1,3 +1,7 @@
+require 'securerandom'
+require 'base64'
+require 'fileutils'
+
 class PostsController < ApplicationController
 	 def user_news
   		posts = Post.includes(:original_poster, post_tags: :user_follows).where(user_follows: {follower_id: current_user.id}).order("post_tags.created_at DESC")
@@ -29,17 +33,34 @@ class PostsController < ApplicationController
     end
 
     def create 
-      user = User.find_by(id: params[:original_poster_id]);
+      returnFile = ""
+      user = User.find_by(id: params[:post][:original_poster_id]);
       unless user 
         render json: {error: "Could not find user"}
       else
-        unless params[:text] == ""
-          post = Post.new(text: params[:text], original_poster: user)
+        unless params[:post][:text] == ""
+          post = Post.new(text: params[:post][:text], original_poster: user)
           pic_post_tag = post.post_media_tags.new
-          unless params[:file] == "null"
+          unless params[:post][:media_file] == "null"
+            fileName = SecureRandom.hex + ".jpg"
+            filePath ||= "#{Rails.root}/public/uploads/media/#{fileName}"
+            puts "THIS IS THE FILE Path" + filePath
+            fileList = FileUtils.touch(filePath)
+            decodedFile = File.open(fileList[0], "w+b")
+            decodedFile.write(Base64.decode64(params[:post][:media_file]))
             
-            pic_post_tag.media_file = params[:file]
+            returnFile = decodedFile
+            
+            pic_post_tag.media_file = decodedFile
+            
+
             pic_post_tag.save
+            File.delete(filePath)
+
+            unless pic_post_tag.errors.messages == {}
+              render json: {error: pic_post_tag.errors.messages}
+            end
+
           end
 
           post.save
@@ -52,7 +73,7 @@ class PostsController < ApplicationController
             unless tag.errors.messages == {}
               render json: {error: tag.errors.messages}
             else
-              render json: {post: post}
+              render json: {post: post, file: returnFile}
             end
           end
         else 
