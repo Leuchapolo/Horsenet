@@ -44,7 +44,6 @@ class PostsController < ApplicationController
           unless params[:post][:media_file] == "null"
             fileName = SecureRandom.hex + ".jpg"
             filePath ||= "#{Rails.root}/public/uploads/media/#{fileName}"
-            puts "THIS IS THE FILE Path" + filePath
             fileList = FileUtils.touch(filePath)
             decodedFile = File.open(fileList[0], "w+b")
             decodedFile.write(Base64.decode64(params[:post][:media_file]))

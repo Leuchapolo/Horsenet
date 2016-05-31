@@ -117,7 +117,7 @@ function setupMakeNewPost(){
 	})
 	$('#newsUnitNewPost').append('<div class = "newPostTextProfPic"></div>')
 	$('.newPostTextProfPic').append('<img class = "newsPostHeaderProfPic" src = "' + Horsenet.CurrentUser.profile_picture.url + '" height = "40" width = "40">')
-	$('.newPostTextProfPic').append('<div class = "newPostTextBox"><textarea class = "newPostText" placeholder = "Write your post here"></textarea></div>')
+	$('.newPostTextProfPic').append('<div class = "newTextBox" id = "newPostTextBox"><textarea class = "newPostText" placeholder = "Write your post here"></textarea></div>')
 	autosize($('textarea'))
 	$('#newsUnitNewPost').append('<div class = "newPostActions"></div>')
 	$('.newPostActions').append('<span class = "newPostActionsTagButtons"><span class="glyphicon glyphicon-tag newPostTagButton" aria-hidden="true"></span></span>')
@@ -145,34 +145,15 @@ function setupMakeNewPost(){
 		  processData: false,
 		  method: 'POST',
 		  success: function(data){
-		  	console.log("Printing data")
-		  	console.log(data)
 		  	$('.newPostText').val("");
-			//location.reload()
+			location.reload()
 		  },
 		  error: function(error){
-		  	console.log("Printing error")
+		  	
 		  	console.log(error)
 		  }
 		});
 
-
-
-		// $.ajax({
-		// 	url: "api/posts",
-		// 	method: "POST",
-		// 	error: function(error){console.log(error)},
-		// 	data: {
-		// 		text: $('.newPostText').val(),
-		// 		original_poster_id: Horsenet.CurrentUser.id,
-		// 		file: "null"
-				
-		// 	},
-		// 	success: function(data){
-		// 		$('.newPostText').val("");
-		// 		location.reload()
-		// 	}
-		// })
 	})
 
 
@@ -268,7 +249,7 @@ var fillNews = function(data){
 			currentUserPicture = Horsenet.CurrentUser.profile_picture.url;
 		}
 		$('#' + commentBox).append('<img class = "newsPostHeaderProfPic" src = "' + currentUserPicture + '" height = "40" width = "40">')
-		$('#' + commentBox).append('<div class = "newPostTextBox"><textarea class = "newPostText" placeholder = "Write your post here"></textarea></div>')
+		$('#' + commentBox).append('<div class = "newTextBox"><textarea class = "newPostText" placeholder = "Write your post here"></textarea></div>')
 		autosize($('textarea'))
 	}
 }
@@ -282,7 +263,7 @@ function handleFile(file){
 
   	reader.addEventListener("load", function () {
   		document.NewPostFile = reader.result
-    	$('.newPostTextBox').after('    + <img src = "' + reader.result + '" height = "40" width = "40">')
+    	$('#newPostTextBox').after('    + <img src = "' + reader.result + '" height = "40" width = "40">')
   	}, false);
 
  	if (file) {
